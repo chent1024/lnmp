@@ -89,7 +89,7 @@ Install_PHP71()
     chkconfig --add php-fpm71
      
     #安装扩展
-    $INSTALL_DIR_PHP71/bin/pecl channel-update
+    $INSTALL_DIR_PHP71/bin/pecl channel-update pecl.php.net
     $INSTALL_DIR_PHP71/bin/pecl install lzf
     $INSTALL_DIR_PHP71/bin/pecl install igbinary
     $INSTALL_DIR_PHP71/bin/pecl install redis

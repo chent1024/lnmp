@@ -65,7 +65,7 @@ Install_PHP56(){
     chkconfig --add php-php56
      
     #安装扩展
-    $INSTALL_DIR_PHP56/bin/pecl channel-update
+    $INSTALL_DIR_PHP56/bin/pecl channel-update pecl.php.net
     $INSTALL_DIR_PHP56/bin/pecl install lzf
     $INSTALL_DIR_PHP56/bin/pecl install igbinary
     $INSTALL_DIR_PHP56/bin/pecl install redis
@@ -73,7 +73,7 @@ Install_PHP56(){
     $INSTALL_DIR_PHP56/bin/pecl install mongodb
     
     cd $WORK_DIR/tmp
-    
+
     if [ ! -f imagick.tar.gz ];then
         wget --progress=bar:force -O imagick.tar.gz $imagick_url
     fi
