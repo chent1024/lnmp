@@ -1,5 +1,6 @@
 # LNMP
-lnmp one cmd
+
+Install lnmp one cmd
 
 >tengine \
 >lua \
