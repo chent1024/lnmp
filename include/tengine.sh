@@ -3,7 +3,7 @@
 Install_Tengine()
 {
     echo "============================Tengine Install start=================================="
-    if [ -d $INSTALL_DIR_NGINX ];then
+    if [ -d $INSTALL_DIR_NGINX/sbin ];then
         echo "tengine has installed"
         return 0
     fi

@@ -3,7 +3,7 @@
 Install_PHP71()
 {
     echo "============================PHP71 Install start=================================="
-    if [ -d $INSTALL_DIR_PHP71 ];then
+    if [ -d $INSTALL_DIR_PHP71/sbin ];then
         echo "php71 has installed"
         return 0
     fi
@@ -86,10 +86,11 @@ Install_PHP71()
     chkconfig --add php-fpm71
      
     #安装扩展
+    $INSTALL_DIR_PHP71/bin/pecl channel-update
     $INSTALL_DIR_PHP71/bin/pecl install lzf
     $INSTALL_DIR_PHP71/bin/pecl install igbinary
     $INSTALL_DIR_PHP71/bin/pecl install redis
-    
+
     #启动
     service php-fpm71 restart
 
