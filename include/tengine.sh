@@ -14,10 +14,10 @@ Install_Tengine()
     lua_nginx_module_url=https://github.com/openresty/lua-nginx-module/archive/v0.10.13.tar.gz
 
     if [ ! -d tmp ]; then \
-        mkdir $WORK_DIR/tmp/tengine
-        mkdir $WORK_DIR/tmp/lua
-        mkdir $WORK_DIR/tmp/devel_kit
-        mkdir $WORK_DIR/tmp/lua_model
+        mkdir -p $WORK_DIR/tmp/tengine
+        mkdir -p $WORK_DIR/tmp/lua
+        mkdir -p $WORK_DIR/tmp/devel_kit
+        mkdir -p $WORK_DIR/tmp/lua_model
     fi
 
     cd $WORK_DIR/tmp
