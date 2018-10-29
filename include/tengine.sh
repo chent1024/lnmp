@@ -9,7 +9,7 @@ Install_Tengine()
     fi
 
     tengine_url=http://tengine.taobao.org/download/tengine-2.2.2.tar.gz
-    lua_url=https://repo.or.cz/luajit-2.0.git/snapshot/fb5e522fbc0750c838ef6a926b11c5d870826183.tar.gz
+    lua_url=http://luajit.org/download/LuaJIT-2.0.5.tar.gz
     devel_kit_url=https://github.com/simpl/ngx_devel_kit/archive/v0.3.0.tar.gz
     lua_nginx_module_url=https://github.com/openresty/lua-nginx-module/archive/v0.10.13.tar.gz
 
