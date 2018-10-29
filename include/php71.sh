@@ -84,6 +84,11 @@ Install_PHP71()
     cp sapi/fpm/init.d.php-fpm /etc/init.d/php-fpm71
     chmod u+x /etc/init.d/php-fpm71
     chkconfig --add php-fpm71
+     
+    #安装扩展
+    $INSTALL_DIR_PHP71/bin/pecl install lzf
+    $INSTALL_DIR_PHP71/bin/pecl install igbinary
+    $INSTALL_DIR_PHP71/bin/pecl install redis
     
     #启动
     service php-fpm71 restart
