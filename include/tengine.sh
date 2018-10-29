@@ -24,16 +24,23 @@ Install_Tengine()
 
     if [ ! -f tengine.tar.gz ];then
         wget --progress=bar:force -O tengine.tar.gz $tengine_url
-        wget --progress=bar:force -O lua.tar.gz $lua_url
+    fi
+    tar -xf ./tengine.tar.gz  -C ./tengine --strip-components=1
+
+    # if [ ! -f lua.tar.gz ];then
+    #     wget --progress=bar:force -O lua.tar.gz $lua_url
+    # fi
+    tar -xf $WORK_DIR/lua.tar.gz  -C ./lua --strip-components=1
+
+    if [ ! -f devel_kit.tar.gz ];then
         wget --progress=bar:force -O devel_kit.tar.gz $devel_kit_url
+    fi
+    tar -xf ./devel_kit.tar.gz  -C ./devel_kit --strip-components=1
+
+    if [ ! -f lua_model.tar.gz ];then
         wget --progress=bar:force -O lua_model.tar.gz $lua_nginx_module_url
-    else
         echo "tengine [found]"
     fi
-
-    tar -xf ./tengine.tar.gz  -C ./tengine --strip-components=1
-    tar -xf ./lua.tar.gz  -C ./lua --strip-components=1
-    tar -xf ./devel_kit.tar.gz  -C ./devel_kit --strip-components=1
     tar -xf ./lua_model.tar.gz  -C ./lua_model --strip-components=1
 
     cd $WORK_DIR/tmp/lua

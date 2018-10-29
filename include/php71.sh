@@ -16,28 +16,31 @@ Install_PHP71()
         mkdir -p $WORK_DIR/tmp/libmcrypt
     fi
 
-    if [ ! -d tmp/php71 ]; then \
-        mkdir -p $WORK_DIR/tmp/php71
-    fi
-
     if [ ! -d tmp/iconv ]; then \
         mkdir -p $WORK_DIR/tmp/iconv
     fi
 
+    if [ ! -d tmp/php71 ]; then \
+        mkdir -p $WORK_DIR/tmp/php71
+    fi
+
     cd $WORK_DIR/tmp
+
+    if [ ! -f libmcrypt.tar.gz ];then
+        wget --progress=bar:force -O libmcrypt.tar.gz $libmcrypt_url
+    fi
+    tar -xf ./libmcrypt.tar.gz -C ./libmcrypt --strip-components=1
+
+    if [ ! -f iconv.tar.gz ];then
+        wget --progress=bar:force -O iconv.tar.gz $iconv_url
+    fi
+    tar -xf ./iconv.tar.gz -C ./iconv --strip-components=1
 
     if [ ! -f php71.tar.gz ];then
         wget --progress=bar:force -O php71.tar.gz $php71_url
-        wget --progress=bar:force -O libmcrypt.tar.gz $libmcrypt_url
-        wget --progress=bar:force -O iconv.tar.gz $iconv_url
-    else
-        echo "php71 [found]"
     fi
-
-    tar -xf ./libmcrypt.tar.gz -C ./libmcrypt --strip-components=1
     tar -xf ./php71.tar.gz -C ./php71 --strip-components=1
-    tar -xf ./iconv.tar.gz -C ./iconv --strip-components=1
-
+    
     cd $WORK_DIR/tmp/libmcrypt
     ./configure
     make && make install

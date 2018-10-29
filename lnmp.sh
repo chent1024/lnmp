@@ -25,6 +25,7 @@ echo ""
 #配置
 WORK_DIR=$(pwd)
 INSTALL_DIR_PHP71=/opt/app/php7.1
+INSTALL_DIR_PHP56=/opt/app/php5.6
 INSTALL_DIR_NGINX=/opt/app/nginx
 LUA_SRC_DIR=/opt/app/lua
 
@@ -35,8 +36,9 @@ useradd -s /sbin/nologin -g www www
 # echo 'LANG="en_US.UTF-8"' > /etc/sysconfig/i18n
 
 . ./include/common.sh
-. ./include/php71.sh
 . ./include/tengine.sh
+. ./include/php71.sh
+. ./include/php56.sh
 
 Start_Install()
 {
@@ -45,7 +47,7 @@ Start_Install()
     Install_Deps
     Install_Tengine
     Install_PHP71
-
+    Install_PHP56
 }
 
 Start_Install 2>&1 | tee ./lnmp-install.log
