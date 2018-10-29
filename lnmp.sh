@@ -50,7 +50,7 @@ Start_Install()
     Install_PHP56
 }
 
-Start_Install 2>&1 | tee ./lnmp-install.log
+Start_Install 2>&1 | tee ./install.log
 
 
 
