@@ -72,6 +72,8 @@ Install_PHP56(){
     $INSTALL_DIR_PHP56/bin/pecl install swoole-1.9.0
     $INSTALL_DIR_PHP56/bin/pecl install mongodb
     
+    cd $WORK_DIR/tmp
+    
     if [ ! -f imagick.tar.gz ];then
         wget --progress=bar:force -O imagick.tar.gz $imagick_url
     fi
