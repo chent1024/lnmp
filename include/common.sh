@@ -12,7 +12,7 @@ Install_Deps()
     echo "[-] Yum install deps packages ..."
     yum -y update
     yum -y install wget ca-certificates \
-        make cmake gcc autoconf gcc-c++ file pcre-devel \
+        make cmake gcc autoconf gcc-c++ file pcre-devel libaio m4 \
         libtool libtool-libs \
         libjpeg libjpeg-devel libpng libpng-devel libpng10 libpng10-devel gd gd-devel freetype freetype-devel \
         libxml2 libxml2-devel \
