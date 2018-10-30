@@ -4,7 +4,7 @@ Install_PHP71()
 {
     echo "============================PHP71 Install start=================================="
     if [ -d $INSTALL_DIR_PHP71/sbin ];then
-        echo "php71 has installed"
+        echo "php71 has been installed"
         return 0
     fi
 

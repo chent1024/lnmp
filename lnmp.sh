@@ -55,6 +55,6 @@ Start_Install()
 
 Start_Install 2>&1 | tee ./install.log
 
-
+netstat -nltp
 
 

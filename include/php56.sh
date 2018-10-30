@@ -3,7 +3,7 @@
 Install_PHP56(){
     echo "============================PHP56 Install start=================================="
     if [ -d $INSTALL_DIR_PHP56/sbin ];then
-        echo "php56 has installed"
+        echo "php56 has been installed"
         return 0
     fi
 
