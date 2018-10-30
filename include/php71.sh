@@ -102,7 +102,7 @@ Install_PHP71()
 
     #composer
     # wget --progress=bar:force https://getcomposer.org/composer.phar
-    mv $WORK_DIR/composer.phar /usr/bin/composer
+    cp $WORK_DIR/composer.phar /usr/bin/composer
     chmod a+x /usr/bin/composer
     #composer 设置中国全量镜像
     composer config -g repo.packagist composer https://packagist.phpcomposer.com
