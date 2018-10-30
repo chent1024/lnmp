@@ -71,6 +71,7 @@ Install_PHP56(){
     $INSTALL_DIR_PHP56/bin/pecl install redis
     $INSTALL_DIR_PHP56/bin/pecl install swoole-1.9.0
     $INSTALL_DIR_PHP56/bin/pecl install mongodb
+    $INSTALL_DIR_PHP56/bin/pecl install pthreads-2.0.10
     
     cd $WORK_DIR/tmp
 
