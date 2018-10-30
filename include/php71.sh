@@ -105,7 +105,7 @@ Install_PHP71()
     service php-fpm71 restart
 
     #composer
-    wget https://getcomposer.org/download/1.7.2/composer.phar
+    wget https://getcomposer.org/composer.phar
     mv composer.phar /usr/bin/composer
     chmod a+x /usr/bin/composer
     #composer 设置中国全量镜像
