@@ -2,10 +2,6 @@
 
 Disable_Selinux()
 {
-    # if [ -s /etc/selinux/config ]; then
-    #     sed -i 's/SELINUX=enforcing/SELINUX=disabled/g' /etc/selinux/config
-    # fi
-
     if [ -s /etc/selinux/config ]; then
         sed -i 's/^SELINUX=.*/SELINUX=disabled/g' /etc/selinux/config
     fi

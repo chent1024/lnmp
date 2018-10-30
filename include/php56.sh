@@ -10,11 +10,11 @@ Install_PHP56(){
     imagick_url=https://github.com/ImageMagick/ImageMagick6/archive/6.9.10-13.tar.gz
     php56_url=http://cn2.php.net/get/php-5.6.38.tar.gz/from/this/mirror
 
-    if [ ! -d tmp/php56 ];then
+    if [ ! -d $WORK_DIR/tmp/php56 ];then
         mkdir -p $WORK_DIR/tmp/php56
     fi
     
-    if [ ! -d tmp/imagick ];then
+    if [ ! -d $WORK_DIR/tmp/imagick ];then
         mkdir -p $WORK_DIR/tmp/imagick
     fi
 
@@ -29,8 +29,8 @@ Install_PHP56(){
     ./configure \
         --prefix=$INSTALL_DIR_PHP56 \
         --enable-fpm \
-        --with-fpm-user=www \
-        --with-fpm-group=www \
+        --with-fpm-user=$HTTP_USER \
+        --with-fpm-group=$HTTP_USER \
         --with-config-file-path=$INSTALL_DIR_PHP56/etc \
         --with-iconv=/usr/local/ \
         --with-mysqli \
@@ -89,7 +89,7 @@ Install_PHP56(){
     service php-php56 restart
 
     echo "============================PHP56 Install end=================================="
-    cd $WORK_DIR/tmp
+    cd $WORK_DIR
 
 
 }

@@ -12,15 +12,15 @@ Install_PHP71()
     iconv_url=https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.15.tar.gz
     php71_url=http://cn2.php.net/get/php-7.1.23.tar.gz/from/this/mirror
 
-    if [ ! -d tmp/libmcrypt ]; then \
+    if [ ! -d $WORK_DIR/tmp/libmcrypt ]; then \
         mkdir -p $WORK_DIR/tmp/libmcrypt
     fi
 
-    if [ ! -d tmp/iconv ]; then \
+    if [ ! -d $WORK_DIR/tmp/iconv ]; then \
         mkdir -p $WORK_DIR/tmp/iconv
     fi
 
-    if [ ! -d tmp/php71 ]; then \
+    if [ ! -d $WORK_DIR/tmp/php71 ]; then \
         mkdir -p $WORK_DIR/tmp/php71
     fi
 
@@ -53,8 +53,8 @@ Install_PHP71()
     ./configure \
         --prefix=$INSTALL_DIR_PHP71 \
         --enable-fpm \
-        --with-fpm-user=www \
-        --with-fpm-group=www \
+        --with-fpm-user=$HTTP_USER \
+        --with-fpm-group=$HTTP_USER \
         --with-config-file-path=$INSTALL_DIR_PHP71/etc \
         --with-iconv=/usr/local/ \
         --with-mysqli \
@@ -98,6 +98,6 @@ Install_PHP71()
     service php-fpm71 restart
 
     echo "============================PHP71 Install end=================================="
-    cd $WORK_DIR/tmp
+    cd $WORK_DIR
 }
 
