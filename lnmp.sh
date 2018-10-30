@@ -66,6 +66,7 @@ Start_Install()
     Install_PHP71
     Install_PHP56
     Install_Es
+    Install_Mysql
 }
 
 Start_Install 2>&1 | tee ./install.log
