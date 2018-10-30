@@ -28,6 +28,7 @@ INSTALL_DIR_PHP71=/opt/app/php7.1
 INSTALL_DIR_PHP56=/opt/app/php5.6
 INSTALL_DIR_NGINX=/opt/app/nginx
 LUA_SRC_DIR=/opt/app/lua
+INSTALL_DIR_ES=/opt/app/elasticsearch
 
 # 添加www
 groupadd www
@@ -39,6 +40,7 @@ useradd -s /sbin/nologin -g www www
 . ./include/tengine.sh
 . ./include/php71.sh
 . ./include/php56.sh
+. ./include/elasticsearch.sh
 
 Start_Install()
 {
@@ -48,6 +50,7 @@ Start_Install()
     Install_Tengine
     Install_PHP71
     Install_PHP56
+    Install_Es
 }
 
 Start_Install 2>&1 | tee ./install.log
