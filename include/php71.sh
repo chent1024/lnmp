@@ -97,6 +97,12 @@ Install_PHP71()
     #启动
     service php-fpm71 restart
 
+
+    #composer
+    wget https://getcomposer.org/download/1.7.2/composer.phar
+    mv composer.phar /usr/bin/composer
+    chmod a+x /usr/bin/composer
+
     echo "============================PHP71 Install end=================================="
     cd $WORK_DIR
 }
