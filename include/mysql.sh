@@ -18,11 +18,17 @@ Install_Mysql()
     if [ ! -f mysql.tar.gz ];then
         wget --progress=bar:force -O mysql.tar.gz $mysql_url
     fi
-    tar -xf ./mysql.tar.gz -C $INSTALL_DIR_MYSQL --strip-components=1
+    tar -xf ./mysql.tar.gz -C ./mysql --strip-components=1
     
     rm -f /etc/my.cnf
     cd $WORK_DIR/tmp/mysql
-    cmake .
+    cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR_MYSQL \
+        -DMYSQL_DATADIR=$INSTALL_DIR_MYSQL/data \
+        -DSYSCONFDIR=/etc \
+        -DEFAULT_CHARSET=utf8 \
+        -DDEFAULT_COLLATION=utf8_general_ci \
+        -DENABLED_LOCAL_INFILE=1 \
+        -DEXTRA_CHARSETS=all
     make -j4
     make install
 
