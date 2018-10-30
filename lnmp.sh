@@ -56,6 +56,7 @@ useradd -s /sbin/nologin -g $HTTP_USER $HTTP_USER
 . ./include/php71.sh
 . ./include/php56.sh
 . ./include/elasticsearch.sh
+. ./include/mysql.sh
 
 Start_Install()
 {
