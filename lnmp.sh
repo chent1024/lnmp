@@ -7,25 +7,6 @@ fi
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 
-clear
-echo ""
-echo "+------------------------------------------------------------------------+"
-echo "|                                 LNMP                                   |"
-echo "|  tengine&&lua_module                                                   |"
-echo "|  php7.1.23                                                             |"
-echo "|  php5.6.38                                                             |"
-echo "|  elasticsearch6.4.2                                                    |"
-echo "|  mysql5.7                                                              |"
-echo "|                                                                        |"
-echo "|                         Author: chent                                  |"
-echo "|                                                                        |"
-echo "|                     Last Modified: 2018-10-30                         |"
-echo "|                                                                        |"
-echo "+------------------------------------------------------------------------+"
-echo "|                 Auto-compile & install LNMP on CentOs                  |"
-echo "+------------------------------------------------------------------------+"
-echo ""
-
 #配置
 WORK_DIR=$(pwd)
 
