@@ -24,6 +24,8 @@ Install_Mysql()
     cd $WORK_DIR/tmp/mysql
     cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR_MYSQL \
         -DMYSQL_DATADIR=$INSTALL_DIR_MYSQL/data \
+        -DDOWNLOAD_BOOST=1 \
+        -DWITH_BOOST=/usr/local/boost_1_59_0 \
         -DSYSCONFDIR=/etc \
         -DEFAULT_CHARSET=utf8 \
         -DDEFAULT_COLLATION=utf8_general_ci \
