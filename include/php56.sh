@@ -81,7 +81,7 @@ Install_PHP56(){
 
     cd $WORK_DIR/tmp/imagick
     ./configure
-    make && make install
+    make -j4 && make install
     $INSTALL_DIR_PHP56/bin/pecl install imagick
 
     #启动
