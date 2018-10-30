@@ -8,7 +8,7 @@ Install_Mysql()
         return 0
     fi
 
-    mysql_url=http://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.24.tar.gz
+    mysql_url=https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-boost-5.7.24.tar.gz
 
     if [ ! -d $WORK_DIR/tmp/mysql ];then
         mkdir -p $WORK_DIR/tmp/mysql
@@ -19,9 +19,10 @@ Install_Mysql()
         wget --progress=bar:force -O mysql.tar.gz $mysql_url
     fi
     tar -xf ./mysql.tar.gz -C ./mysql --strip-components=1
-    
+
     rm -f /etc/my.cnf
     cd $WORK_DIR/tmp/mysql
+    cp -r boost/boost_1_59_0/ /usr/local/
     cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR_MYSQL \
         -DMYSQL_DATADIR=$INSTALL_DIR_MYSQL/data \
         -DDOWNLOAD_BOOST=1 \
@@ -37,12 +38,12 @@ Install_Mysql()
     groupadd $MYSQL_USER
     useradd -s /sbin/nologin -g $MYSQL_USER $MYSQL_USER
 
-    scripts/mysql_install_db --basedir=$INSTALL_DIR_MYSQL --user=$MYSQL_USER
+    scripts/mysql_install_db --basedir=$INSTALL_DIR_MYSQL --datadir=$INSTALL_DIR_MYSQL/data --user=$MYSQL_USER
 
     #启动项
-    cp support-files/mysql.server /etc/init.d/mysql
-    chmod u+x /etc/init.d/mysql
-    chkconfig --add mysql
+    cp support-files/mysql.server /etc/init.d/mysqld
+    chmod u+x /etc/init.d/mysqld
+    chkconfig --add mysqld
 
     chown -Rf $MYSQL_USER.MYSQL_USER $INSTALL_DIR_MYSQL/data
 
