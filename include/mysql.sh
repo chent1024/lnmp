@@ -38,7 +38,7 @@ Install_Mysql()
     groupadd $MYSQL_USER
     useradd -s /sbin/nologin -g $MYSQL_USER $MYSQL_USER
 
-    scripts/mysql_install_db --basedir=$INSTALL_DIR_MYSQL --datadir=$INSTALL_DIR_MYSQL/data --user=$MYSQL_USER
+    $INSTALL_DIR_MYSQL/bin/mysqld --initialize-insecure --basedir=$INSTALL_DIR_MYSQL --datadir=$INSTALL_DIR_MYSQL/data --user=$MYSQL_USER
 
     #启动项
     cp support-files/mysql.server /etc/init.d/mysqld
@@ -50,7 +50,7 @@ Install_Mysql()
     cp support-files/my-default.cnf /etc/my.cnf
 
     #启动
-    service mysql start
+    service mysqld start
     $INSTALL_DIR_MYSQL/bin/mysqladmin -u $MYSQL_ROOT password $MYSQL_PWD
     
     echo "============================Mysql Install end=================================="
