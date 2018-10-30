@@ -8,7 +8,7 @@ Install_Mysql()
         return 0
     fi
 
-    mysql_url=https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.24.tar.gz
+    mysql_url=http://cdn.mysql.com//Downloads/MySQL-5.7/mysql-5.7.24.tar.gz
 
     if [ ! -d $WORK_DIR/tmp/mysql ];then
         mkdir -p $WORK_DIR/tmp/mysql
