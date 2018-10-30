@@ -27,27 +27,33 @@ Install_Mysql()
         -DMYSQL_DATADIR=$INSTALL_DIR_MYSQL/data \
         -DDOWNLOAD_BOOST=1 \
         -DWITH_BOOST=/usr/local/boost_1_59_0 \
-        -DSYSCONFDIR=/etc \
-        -DEFAULT_CHARSET=utf8 \
-        -DDEFAULT_COLLATION=utf8_general_ci \
+        -DSYSCONFDIR=$INSTALL_DIR_MYSQL/etc \
+        -DDEFAULT_CHARSET=utf8mb4 \
+        -DDEFAULT_COLLATION=utf8mb4_general_ci \
         -DENABLED_LOCAL_INFILE=1 \
         -DEXTRA_CHARSETS=all
+        -DWITH_INNOBASE_STORAGE_ENGINE=1 \
+        -DWITH_PARTITION_STORAGE_ENGINE=1 \
+        -DWITH_FEDERATED_STORAGE_ENGINE=1 \
+        -DWITH_BLACKHOLE_STORAGE_ENGINE=1 \
+        -DWITH_MYISAM_STORAGE_ENGINE=1 \
+        -DWITH_EMBEDDED_SERVER=1
+
     make -j4
     make install
-
-    groupadd $MYSQL_USER
-    useradd -s /sbin/nologin -g $MYSQL_USER $MYSQL_USER
-
-    $INSTALL_DIR_MYSQL/bin/mysqld --initialize-insecure --basedir=$INSTALL_DIR_MYSQL --datadir=$INSTALL_DIR_MYSQL/data --user=$MYSQL_USER
+    
+    cp $WORK_DIR/conf/my.cnf /etc/my.cnf
 
     #启动项
     cp support-files/mysql.server /etc/init.d/mysqld
     chmod u+x /etc/init.d/mysqld
     chkconfig --add mysqld
 
-    chown -Rf $MYSQL_USER.MYSQL_USER $INSTALL_DIR_MYSQL/data
-
-    cp support-files/my-default.cnf /etc/my.cnf
+    groupadd $MYSQL_USER
+    useradd -s /sbin/nologin -g $MYSQL_USER $MYSQL_USER
+    
+    chown -Rf $MYSQL_USER.$MYSQL_USER $INSTALL_DIR_MYSQL/data
+    $INSTALL_DIR_MYSQL/bin/mysqld --initialize-insecure --basedir=$INSTALL_DIR_MYSQL --datadir=$INSTALL_DIR_MYSQL/data --user=$MYSQL_USER
 
     #启动
     service mysqld start
