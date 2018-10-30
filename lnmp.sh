@@ -26,7 +26,6 @@ MYSQL_PWD=ikuaiping123
 
 HTTP_USER=www
 
-# 添加www
 groupadd $HTTP_USER
 useradd -s /sbin/nologin -g $HTTP_USER $HTTP_USER
 
