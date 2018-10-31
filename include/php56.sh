@@ -66,8 +66,6 @@ Install_PHP56(){
      
     #安装扩展
     $INSTALL_DIR_PHP56/bin/pecl channel-update pecl.php.net
-    $INSTALL_DIR_PHP56/bin/pecl install lzf
-    $INSTALL_DIR_PHP56/bin/pecl install igbinary
     $INSTALL_DIR_PHP56/bin/pecl install redis
     $INSTALL_DIR_PHP56/bin/pecl install swoole-1.9.0
     $INSTALL_DIR_PHP56/bin/pecl install mongodb

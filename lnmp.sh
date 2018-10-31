@@ -48,10 +48,16 @@ Start_Install()
     Install_PHP56
     Install_Es
     Install_Mysql
+
+    yum clean all
+    rm -rf /var/cache/yum/*
+    rm -rf /tmp/pear
 }
 
 Start_Install 2>&1 | tee ./install.log
 
 netstat -nltp
+
+exit 1
 
 

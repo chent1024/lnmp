@@ -90,13 +90,15 @@ Install_PHP71()
      
     #安装扩展
     $INSTALL_DIR_PHP71/bin/pecl channel-update pecl.php.net
-    $INSTALL_DIR_PHP71/bin/pecl install lzf
-    $INSTALL_DIR_PHP71/bin/pecl install igbinary
     $INSTALL_DIR_PHP71/bin/pecl install redis
 
     #PHP环境变量
-    export $PATH:$INSTALL_DIR_PHP71
-  
+    echo "if [ -d \"$INSTALL_DIR_PHP71/bin\" ] ; then
+        PATH=$PATH:$INSTALL_DIR_PHP71/bin
+        export PATH
+    fi" > env_php.sh
+    mv env_php.sh /etc/profile.d/env_php.sh
+    
     #启动
     service php-fpm71 restart
 
