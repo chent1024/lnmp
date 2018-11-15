@@ -13,35 +13,23 @@ Install_Tengine()
     devel_kit_url=https://github.com/simpl/ngx_devel_kit/archive/v0.3.0.tar.gz
     lua_nginx_module_url=https://github.com/openresty/lua-nginx-module/archive/v0.10.13.tar.gz
 
-    if [ ! -d tmp ]; then \
-        mkdir -p $WORK_DIR/tmp/tengine
-        mkdir -p $WORK_DIR/tmp/lua
-        mkdir -p $WORK_DIR/tmp/devel_kit
-        mkdir -p $WORK_DIR/tmp/lua_model
+    if [ ! -d $WORK_DIR/tmp ];then
+        mkdir -p $WORK_DIR/tmp
     fi
-
+    
     cd $WORK_DIR/tmp
 
-    if [ ! -f tengine.tar.gz ];then
-        wget --progress=bar:force -O tengine.tar.gz $tengine_url
-    fi
-    tar -xf ./tengine.tar.gz  -C ./tengine --strip-components=1
+    Download $tengine_url tengine.tar.gz
+    Targz ./tengine.tar.gz ./tengine
 
-    # if [ ! -f lua.tar.gz ];then
-    #     wget --progress=bar:force -O lua.tar.gz $lua_url
-    # fi
-    tar -xf $WORK_DIR/lua.tar.gz  -C ./lua --strip-components=1
+    # Download $lua_url lua.tar.gz
+    Targz $WORK_DIR/lua.tar.gz ./lua
 
-    if [ ! -f devel_kit.tar.gz ];then
-        wget --progress=bar:force -O devel_kit.tar.gz $devel_kit_url
-    fi
-    tar -xf ./devel_kit.tar.gz  -C ./devel_kit --strip-components=1
+    Download $devel_kit_url devel_kit.tar.gz
+    Targz ./devel_kit.tar.gz ./devel_kit
 
-    if [ ! -f lua_model.tar.gz ];then
-        wget --progress=bar:force -O lua_model.tar.gz $lua_nginx_module_url
-        echo "tengine [found]"
-    fi
-    tar -xf ./lua_model.tar.gz  -C ./lua_model --strip-components=1
+    Download $lua_nginx_module_url lua_model.tar.gz
+    Targz ./lua_model.tar.gz ./lua_model
 
     cd $WORK_DIR/tmp/lua
     make PREFIX=/usr/local/luajit

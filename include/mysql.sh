@@ -9,16 +9,14 @@ Install_Mysql()
     fi
 
     mysql_url=https://cdn.mysql.com//Downloads/MySQL-5.7/mysql-boost-5.7.24.tar.gz
-
-    if [ ! -d $WORK_DIR/tmp/mysql ];then
-        mkdir -p $WORK_DIR/tmp/mysql
+    if [ ! -d $WORK_DIR/tmp ];then
+        mkdir -p $WORK_DIR/tmp
     fi
-
+    
     cd $WORK_DIR/tmp
-    if [ ! -f mysql.tar.gz ];then
-        wget --progress=bar:force -O mysql.tar.gz $mysql_url
-    fi
-    tar -xf ./mysql.tar.gz -C ./mysql --strip-components=1
+
+    Download $mysql_url mysql.tar.gz
+    Targz ./mysql.tar.gz ./mysql
 
     rm -f /etc/my.cnf
     cd $WORK_DIR/tmp/mysql

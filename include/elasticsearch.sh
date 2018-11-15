@@ -10,21 +10,15 @@ Install_Es()
 
     elastic_url=https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.4.2.tar.gz
     elastic_passwd='ikuaiping#520***'
+    if [ ! -d $WORK_DIR/tmp ];then
+        mkdir -p $WORK_DIR/tmp
+    fi
     
-    if [ ! -d $WORK_DIR/tmp/elastic ];then
-        mkdir -p $WORK_DIR/tmp/elastic
-    fi
-
-    if [ ! -d $INSTALL_DIR_ES ];then
-        mkdir -p $INSTALL_DIR_ES
-    fi
-
     cd $WORK_DIR/tmp
-    if [ ! -f elastic.tar.gz ];then
-        wget --progress=bar:force -O elastic.tar.gz $elastic_url
-    fi
-    tar -xf ./elastic.tar.gz -C $INSTALL_DIR_ES --strip-components=1
-    
+
+    Download $elastic_url elastic.tar.gz
+    Targz ./elastic.tar.gz $INSTALL_DIR_ES
+
     # jdk
     yum install -y java-1.8.0-openjdk sshpass
 

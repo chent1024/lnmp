@@ -11,36 +11,22 @@ Install_PHP71()
     libmcrypt_url=https://cytranet.dl.sourceforge.net/project/mcrypt/Libmcrypt/2.5.8/libmcrypt-2.5.8.tar.gz
     iconv_url=https://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.15.tar.gz
     php71_url=http://cn2.php.net/get/php-7.1.23.tar.gz/from/this/mirror
-
-    if [ ! -d $WORK_DIR/tmp/libmcrypt ]; then \
-        mkdir -p $WORK_DIR/tmp/libmcrypt
+    
+    if [ ! -d $WORK_DIR/tmp ];then
+        mkdir -p $WORK_DIR/tmp
     fi
-
-    if [ ! -d $WORK_DIR/tmp/iconv ]; then \
-        mkdir -p $WORK_DIR/tmp/iconv
-    fi
-
-    if [ ! -d $WORK_DIR/tmp/php71 ]; then \
-        mkdir -p $WORK_DIR/tmp/php71
-    fi
-
+    
     cd $WORK_DIR/tmp
 
-    if [ ! -f libmcrypt.tar.gz ];then
-        wget --progress=bar:force -O libmcrypt.tar.gz $libmcrypt_url
-    fi
-    tar -xf ./libmcrypt.tar.gz -C ./libmcrypt --strip-components=1
+    Download $libmcrypt_url libmcrypt.tar.gz
+    Targz ./libmcrypt.tar.gz ./libmcrypt
 
-    if [ ! -f iconv.tar.gz ];then
-        wget --progress=bar:force -O iconv.tar.gz $iconv_url
-    fi
-    tar -xf ./iconv.tar.gz -C ./iconv --strip-components=1
+    Download $iconv_url iconv.tar.gz
+    Targz ./iconv.tar.gz ./iconv
 
-    if [ ! -f php71.tar.gz ];then
-        wget --progress=bar:force -O php71.tar.gz $php71_url
-    fi
-    tar -xf ./php71.tar.gz -C ./php71 --strip-components=1
-    
+    Download $php71_url php71.tar.gz
+    Targz ./php71.tar.gz ./php71
+
     cd $WORK_DIR/tmp/libmcrypt
     ./configure
     make && make install

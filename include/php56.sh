@@ -9,21 +9,14 @@ Install_PHP56(){
 
     imagick_url=https://github.com/ImageMagick/ImageMagick6/archive/6.9.10-13.tar.gz
     php56_url=http://cn2.php.net/get/php-5.6.38.tar.gz/from/this/mirror
-
-    if [ ! -d $WORK_DIR/tmp/php56 ];then
-        mkdir -p $WORK_DIR/tmp/php56
+    if [ ! -d $WORK_DIR/tmp ];then
+        mkdir -p $WORK_DIR/tmp
     fi
     
-    if [ ! -d $WORK_DIR/tmp/imagick ];then
-        mkdir -p $WORK_DIR/tmp/imagick
-    fi
-
     cd $WORK_DIR/tmp
 
-    if [ ! -f php56.tar.gz ];then
-        wget --progress=bar:force -O php56.tar.gz $php56_url
-    fi
-    tar -xf ./php56.tar.gz -C ./php56 --strip-components=1
+    Download $php56_url php56.tar.gz
+    Targz ./php56.tar.gz ./php56
 
     cd $WORK_DIR/tmp/php56
     ./configure \
@@ -73,10 +66,8 @@ Install_PHP56(){
     
     cd $WORK_DIR/tmp
 
-    if [ ! -f imagick.tar.gz ];then
-        wget --progress=bar:force -O imagick.tar.gz $imagick_url
-    fi
-    tar -xf ./imagick.tar.gz -C ./imagick --strip-components=1
+    Download $imagick_url imagick.tar.gz
+    Targz ./imagick.tar.gz ./imagick
 
     cd $WORK_DIR/tmp/imagick
     ./configure
